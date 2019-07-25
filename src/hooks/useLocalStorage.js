@@ -7,5 +7,10 @@ const [storedValue,setStoredValue] = useState(()=>{
     console.log(`useLocalStorage:useState`, key, initialValue, item);
     return item ? JSON.parse(item) : initialValue;
 });
-return [storedValue];
+const setValue=value=> {
+    setStoredValue(value);
+    window.localStorage.setItem(key, JSON.stringify (value));
+
+}
+return [storedValue,setValue];
 }
